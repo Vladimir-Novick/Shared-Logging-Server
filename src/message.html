@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+   <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen" />
+<title>Shared Logging Server</title>
+
+
+</head>
+<body class='main_bg1'>
+         <div class="top_header"></div>
+        <div class="header">
+
+        <div class="logo">
+            <img src="/images/logo.png" alt="log share server">
+
+<div class="header_text">
+    Send Custom Message to Shared Logging Server </div>
+
+
+        </div>
+        <div class="top_header_b"></div>
+
+        <div class="center">
+<form action="/profile/index/sendmessage" method="post" enctype="application/x-www-form-urlencoded">
+    <div><label class="lbl" for="logger">Logger Name</label></div>
+    <div >
+    <textarea cols="60" rows="1" id="logger" name="logger">custom</textarea>
+    </div>
+    <div><label class="lbl" for="levelname">Level</label></div>
+    <div >
+    <textarea cols="60" rows="1" id="levelname" name="levelname"></textarea>
+    </div>
+    <div><label class="lbl" for="message">Enter Message</label></div>
+    <div >
+    <textarea cols="60" rows="8" id="message" name="message"></textarea>
+    </div>
+    <div class="center_context">
+    <input  type="submit" class="sendamessage" value="Send" id="send_message" name="send_message">
+    </div>
+
+</form>
+        </div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$("input.sendamessage").click(function(event) {
+event.preventDefault();
+var logger = $('textarea#logger').val();
+var levelname = $('textarea#levelname').val();
+var message = $('textarea#message').val();
+var id      = $('input#id').val();
+var msg = "logger="+logger+"&levelname="+levelname + "&" + "message=" + message + "";
+url = window.location;
+var posting = $.post(url, msg);
+
+posting.done(function( data ) {
+  alert(data);
+});
+});
+
+
+</script>
+</body>
